@@ -1,16 +1,23 @@
 <ion-view view-title="Chats">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+    <ion-content>
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+        <ion-list>
+            <ion-item>
+                Class: UserHasRoutes
+            </ion-item>
+            <ion-item ng-repeat="route in UserHasRoutesResponse">
+            ID: {{route.objectId || 'no value'}}<br>
+            DistanceMeters: {{route.DistanceMeters || 'no value'}}<br>
+            DistanceSteps: {{route.DistanceSteps || 'no value'}}<br>
+            User: {{route.User.objectId || 'no value'}}<br>
+            Routes: {{route.routes.objectId || 'no value'}}<br>
+            </ion-item>
+            <ion-item>
+                Function: getHealthKit
+            </ion-item>
+            <ion-item>
+                Result: {{healthKit}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>

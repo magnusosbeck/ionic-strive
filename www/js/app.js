@@ -7,12 +7,16 @@
 // 'starter.controllers' is found in controllers.js
 
 var accountModule = angular.module('accountModule', []);
+var routeModule = angular.module('routeModule', []);
+var healthKitModule = angular.module('healthKitModule', []);
 
 angular.module('starter', [
     'ionic',
     'starter.controllers',
     'starter.services',
-    'accountModule'
+    'accountModule',
+    'routeModule',
+    'healthKitModule'
 ])
 
 .run(function($ionicPlatform) {
