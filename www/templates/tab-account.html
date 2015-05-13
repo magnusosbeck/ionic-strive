@@ -1,9 +1,59 @@
 <ion-view view-title="Account">
-  <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
-  </ion-content>
+    <ion-content padding="true">
+        <div class="list">
+            <div class="item">
+                <span class="input-label">Account by <span ng-hide="banan">username</span><span ng-show="banan">phone number</span></span>
+                <label class="toggle">
+                    <input type="checkbox" ng-model="banan">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="list" ng-hide="banan">
+            <label class="item item-input">
+                <span class="input-label">Username</span>
+                <input type="text" ng-model="loginInfo.username">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="loginInfo.password">
+            </label>
+            <div class="item">
+                {{loginResult}}
+                <button class="button button-positive button-block" ng-click="loginByUsername()">
+                    Login
+                </button>
+                <button class="button button-block">
+                    Register
+                </button>
+            </div>
+        </div>
+        <div class="list" ng-show="banan">
+            <label class="item item-input">
+                <span class="input-label">phonenumber</span>
+                <input type="number">
+            </label>
+            <div class="item">
+                <button class="button button-positive button-block">
+                    Login
+                </button>
+                <button class="button button-block">
+                    Register
+                </button>
+            </div>
+        </div>
+    </ion-content>
 </ion-view>
+
+
+<!--<ion-view view-title="Account">-->
+<!--<ion-content>-->
+<!--<ion-list>-->
+<!--<ion-toggle  ng-model="settings.enableFriends">-->
+<!--Enable Friends-->
+<!--</ion-toggle>-->
+<!--</ion-list>-->
+<!--</ion-content>-->
+<!--</ion-view>-->
