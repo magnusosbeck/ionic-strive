@@ -15,8 +15,6 @@ routeModule.directive('routeMap',[function () {
             }
             scope.cityCardHeight = cityCardHeight;
 
-
-
             console.log(scope.routeMap);
 
         },
