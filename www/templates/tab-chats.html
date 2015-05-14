@@ -3,21 +3,24 @@
 
         <ion-list>
             <ion-item>
-                Class: UserHasRoutes
+                {{result}}
             </ion-item>
-            <ion-item ng-repeat="route in UserHasRoutesResponse">
-            ID: {{route.objectId || 'no value'}}<br>
-            DistanceMeters: {{route.DistanceMeters || 'no value'}}<br>
-            DistanceSteps: {{route.DistanceSteps || 'no value'}}<br>
-            User: {{route.User.objectId || 'no value'}}<br>
-            Routes: {{route.routes.objectId || 'no value'}}<br>
-            </ion-item>
-            <ion-item>
-                Function: getHealthKit
-            </ion-item>
-            <ion-item>
-                Result: {{healthKit}}
-            </ion-item>
+            <!--<ion-item>-->
+                <!--Class: UserHasRoutes-->
+            <!--</ion-item>-->
+            <!--<ion-item ng-repeat="route in UserHasRoutesResponse">-->
+            <!--ID: {{route.objectId || 'no value'}}<br>-->
+            <!--DistanceMeters: {{route.DistanceMeters || 'no value'}}<br>-->
+            <!--DistanceSteps: {{route.DistanceSteps || 'no value'}}<br>-->
+            <!--User: {{route.User.objectId || 'no value'}}<br>-->
+            <!--Routes: {{route.routes.objectId || 'no value'}}<br>-->
+            <!--</ion-item>-->
+            <!--<ion-item>-->
+                <!--Function: getHealthKit-->
+            <!--</ion-item>-->
+            <!--<ion-item>-->
+                <!--Result: {{healthKit}}-->
+            <!--</ion-item>-->
         </ion-list>
     </ion-content>
 </ion-view>

@@ -28,6 +28,36 @@ routeModule.factory('routeService', ['$http', '$q', function ($http, $q) {
 
             return deferred.promise;
 
+        },
+        /**
+         *
+         * @param {Object} user
+         * @returns {promise|*|qFactory.Deferred.promise|fd.g.promise}
+         */
+        getRoutsBasedOnUserId : function(userID){
+            var deferred = $q.defer();
+
+            var myUser = {User:userID};
+            var strUser = JSON.stringify(myUser);
+
+            $http({
+                method: 'POST',
+                url: rootUrl + "functions/getRoutsByUser",
+                //data : '{"User":"' +  user + '"}',
+                data : strUser,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).
+              success(function (data, status, headers, config) {
+                  console.log('data result from REST:', data);
+                  deferred.resolve(data);
+              }).
+              error(function (data, status, headers, config) {
+                  deferred.reject('error');
+              });
+
+            return deferred.promise;
         }
         //getSpecifiedUser: function (userID) {
         //    var deferred = $q.defer();
