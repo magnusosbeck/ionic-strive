@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
 
-  .controller('DashCtrl', function ($scope) {
+  .controller('DashCtrl', function ($scope, accountService, $ionicScrollDelegate, $location, $stateParams, $state) {
+
 
       $scope.route = {
           "results": [
@@ -932,6 +933,35 @@ angular.module('starter.controllers', [])
           ]
       };
 
+
+
+
+      if($stateParams.id){
+          for(var i in $scope.route.results){
+              if($scope.route.results[i].objectId == $stateParams.id){
+                  $scope.detailedView = $scope.route.results[i];
+                  console.log($scope.detailedView);
+
+              }
+          }
+        }
+
+
+      $scope.getBack = function(){
+          $state.go('tab.dash');
+      };
+
+
+      accountService.getSpecifiedUser('wn4UYGoQ1N').then(function(userRespos){
+
+          userRespos.distanceOnThisStreth = 500;
+          $scope.route.results[3].users = [userRespos];
+          console.log($scope.route);
+
+          $location.hash('usersLocation');
+          $ionicScrollDelegate.anchorScroll(true);
+      });
+
       for (var i in $scope.route.results) {
           $scope.route.results[i].ImageUrl = faker.image.image();
       }
@@ -958,8 +988,10 @@ angular.module('starter.controllers', [])
 
   })
 
-  .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
-      $scope.chat = Chats.get($stateParams.chatId);
+  .controller('ChatDetailCtrl', function ($scope, $stateParams) {
+      console.log($stateParams);
+
+
   })
 
   .controller('AccountCtrl', function ($scope, accountService) {
