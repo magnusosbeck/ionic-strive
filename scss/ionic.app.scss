@@ -21,6 +21,40 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+
 .tab-nav{
-	background-color: red;
+	background-color: black;
+	border: 0;
+	
+	border: 0px !important;
+    border-bottom-color: transparent !important;
+    background-image: none;
+    border-bottom: none;
+	
+	.tab-item{
+		border: none;
+		.icon{
+			color: #5e5e5e;			
+			font-size: 20px;
+			height: 20px;
+			margin-top: 8px;
+		}	
+		.tab-title{
+			font-size: 10px;
+			color: #5e5e5e;
+		}
+		
+		&.tab-item-active{
+			.icon{
+			color: #ffb22a;			
+		
+		}
+			.tab-title{
+		
+			color: #ffb22a;
+			}	
+		}
+
+	} 
 }
+
