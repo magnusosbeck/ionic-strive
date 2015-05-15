@@ -4,3 +4,10 @@
 node_modules/
 platforms/
 plugins/
+.idea/.name
+.idea/encodings.xml
+.idea/ionic-strive.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/scopes/scope_settings.xml
