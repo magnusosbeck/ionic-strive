@@ -11,12 +11,12 @@ routeModule.directive('routeMap',['$state', function ($state) {
 
             scope.isHere = false;
 
-            var cityCardHeight = scope.routeMap.DistanceFromPreviousPointMeters / 10;
-            if(cityCardHeight < 200){
-                cityCardHeight = 200;
-            }
+            var cityCardHeight = scope.routeMap.distanceToNextPoint / scope.meterDevider;
+            //if(cityCardHeight < 200){
+             //   cityCardHeight = 200;
+            //}
 
-            if(scope.routeMap.users){
+            if(scope.routeMap.isHere){
                 scope.isHere = true;
             }
 
@@ -28,7 +28,7 @@ routeModule.directive('routeMap',['$state', function ($state) {
 
         },
         controller: ['$scope',function ($scope) {
-
+             $scope.meterDevider = 20;
         }]
     };
 }]);

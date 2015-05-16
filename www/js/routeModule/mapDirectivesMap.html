@@ -3,12 +3,14 @@
     <div class="checkPointContainer text-right">
     <br>
         <span>Checkpoint:</span><br>
-        <span style="font-weight: bold;">{{routeMap.CityName}}</span><br/>
-        <span>Delsträcka: {{routeMap.DistanceFromPreviousPointMeters}} m</span><br/>
-        <span>Total: {{routeMap.TotalDistanceMeters}} m</span><br/>
+        <span style="font-weight: bold;">{{routeMap.cityName}}</span><br/>
+        <span>Delsträcka: {{routeMap.distanceToNextPoint}} m</span><br/>
+        <span>Total: {{routeMap.totalDistanceMeters}} m</span><br/>
     </div>
-    <img class="userIconMap userIconMap-me" style="bottom: 50px;" ng-repeat="user in routeMap.users"
-         src="{{user.imgUrl}}" alt=""/>
+    <img ng-repeat="user in routeMap.users"
+         class="userIconMap userIconMap-me"
+         style="top: {{user.distanceOnThisSectionMeters/meterDevider}}px;"
+         src="{{user.imageUrl}}" alt=""/>
     <span class="checkpointMarkerIsHere ion-location"></span>
 </div>
 

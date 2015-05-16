@@ -1,51 +1,29 @@
 appModule.factory('testService', ['$http', '$q', function ($http, $q) {
 
-    var rootUrl = 'https://api.parse.com/1/';
-    $http.defaults.headers.common["X-Parse-Application-Id"] = "KoQHnogEss1EulYLu7xS8zzQvM0T5lifc7pOqSLA";
-    $http.defaults.headers.common["X-Parse-REST-API-Key"] = "SCNHZIrtoCMdSfWwZDaPfWLpPqSATSz2ChbjmvTR";
+    var rootUrl = 'http://api.getstriveapp.com/v1/';
+    //http://api.getstriveapp.com/v1/routes?routeId=mYXvSFlca3&userId=L4tOQcuyXc&dates=2015-05-16,9000,3000;2015-05-15,9000,3000;2015-05-14,6000,2000;2015-05-13,4000,1300;2015-05-12,4000,1300;2015-05-11,4000,1300;2015-05-10,3000,1000;
+
 
     var testService = {
-        getUserHasRoutes: function () {
-            var deferred = $q.defer();
-
-            $http({
-                method: 'GET',
-                url: rootUrl + 'classes/UserHasRoutes',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).
-              success(function (data, status, headers, config) {
-                  deferred.resolve(data);
-              }).
-              error(function (data, status, headers, config) {
-                  if(status == '404'){
-                      alert('Wrong Username or Password, plz try again!');
-                  }
-                  deferred.reject('error');
-              });
-
-
-            return deferred.promise;
-
-        },
         test : function(){
+            delete $http.defaults.headers.common["X-Parse-Application-Id"];
+            delete $http.defaults.headers.common["X-Parse-REST-API-Key"];
+            console.log($http.defaults.headers.common);
+
             var deferred = $q.defer();
-
-            //var myUser = {User:userID};
-            //var strUser = JSON.stringify(myUser);
-
             $http({
                 method: 'POST',
-                url: rootUrl + "functions/updateStrive",
-                //data : '{"User":"' +  user + '"}',
-                //data : strUser,
+                url: rootUrl + "routes",
+                params : {
+                    routeId : 'mYXvSFlca3',
+                    userId : 'L4tOQcuyXc',
+                    dates : '2015-05-16,9000,3000;2015-05-15,9000,3000;2015-05-14,6000,2000;2015-05-13,4000,1300;2015-05-12,4000,1300;2015-05-11,4000,1300;2015-05-10,3000,1000;'
+                },
                 headers: {
                     'Content-Type': 'application/json'
                 }
             }).
               success(function (data, status, headers, config) {
-                  console.log('data result from REST:', data);
                   deferred.resolve(data);
               }).
               error(function (data, status, headers, config) {

@@ -1,8 +1,6 @@
 accountModule.factory('accountService', ['$http', '$q', '$location', function ($http, $q, $location) {
 
     var rootUrl = 'https://api.parse.com/1/';
-    $http.defaults.headers.common["X-Parse-Application-Id"] = "KoQHnogEss1EulYLu7xS8zzQvM0T5lifc7pOqSLA";
-    $http.defaults.headers.common["X-Parse-REST-API-Key"] = "SCNHZIrtoCMdSfWwZDaPfWLpPqSATSz2ChbjmvTR";
 
     var accountService = {
         /**
@@ -13,7 +11,8 @@ accountModule.factory('accountService', ['$http', '$q', '$location', function ($
          */
         login: function (userName, password) {
             var deferred = $q.defer();
-
+            $http.defaults.headers.common["X-Parse-Application-Id"] = "KoQHnogEss1EulYLu7xS8zzQvM0T5lifc7pOqSLA";
+            $http.defaults.headers.common["X-Parse-REST-API-Key"] = "SCNHZIrtoCMdSfWwZDaPfWLpPqSATSz2ChbjmvTR";
             $http({
                 method: 'GET',
                 url: rootUrl + 'login',
@@ -41,7 +40,8 @@ accountModule.factory('accountService', ['$http', '$q', '$location', function ($
         },
         getSpecifiedUser: function (userID) {
             var deferred = $q.defer();
-
+            $http.defaults.headers.common["X-Parse-Application-Id"] = "KoQHnogEss1EulYLu7xS8zzQvM0T5lifc7pOqSLA";
+            $http.defaults.headers.common["X-Parse-REST-API-Key"] = "SCNHZIrtoCMdSfWwZDaPfWLpPqSATSz2ChbjmvTR";
             $http({
                 method: 'GET',
                 url: rootUrl + 'users/' + userID,
