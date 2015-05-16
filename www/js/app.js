@@ -9,6 +9,7 @@
 var accountModule = angular.module('accountModule', []);
 var routeModule = angular.module('routeModule', []);
 var healthKitModule = angular.module('healthKitModule', []);
+var appModule = angular.module('appModule', []);
 
 angular.module('starter', [
     'ionic',
@@ -16,7 +17,8 @@ angular.module('starter', [
     'starter.services',
     'accountModule',
     'routeModule',
-    'healthKitModule'
+    'healthKitModule',
+    'appModule'
 ])
 
   .run(function ($ionicPlatform, $ionicNavBarDelegate) {
@@ -29,10 +31,11 @@ angular.module('starter', [
           }
           if (window.StatusBar) {
               // org.apache.cordova.statusbar required
-              StatusBar.styleLightContent();
+              //StatusBar.styleLightContent();
+            StatusBar.hide();
           }
 
-
+          //$cordovaStatusbar.hide();
           $ionicNavBarDelegate.showBar(false);
 
 

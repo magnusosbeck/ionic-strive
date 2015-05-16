@@ -1,9 +1,38 @@
-<ion-view view-title="My Strive">
-  <ion-content style="background-color: #2d2d2d;">
-
-      <div ng-repeat="city in route.results" route-map="city"></div>
-
+<ion-view view-title="My Strive" style="margin-top: 25px; background-image: url('http://www.impots-locaux.net/wp-content/uploads/2014/04/paris-aide-de-l-etat.jpg'); background-size: cover; background-position: center center;">
+    <ion-content class="col-50 mapLine" padding="true">
+        <div ng-repeat="city in route.results" route-map="city"></div>
     </ion-content>
+    <ion-content class="col-50 col-offset-50 text-left cityPointContainer">
+        <ion-refresher
+          pulling-text="Pull to refresh..."
+          on-refresh="doRefresh()">
+        </ion-refresher>
+        <a href="" ng-click="findMe()"><span>Nuvarande position</span></a><br><br>
+        <span class="title">{{route.results[3].CityName}}</span><br/>
+        <span>Sträcka: {{route.results[3].DistanceFromPreviousPointMeters}} m</span><br/>
+        <span>Total: {{route.results[3].TotalDistanceMeters}} m</span><br/>
+        <hr/>
+        <img src="{{route.results[3].ImageUrl}}" width="100%" alt=""/>
+        <span>{{route.results[3].WikiText | limitTo:250}}..</span><br/>
+    </ion-content>
+
+
+
+    <!--<ion-content padding="true">-->
+        <!--<div class="row">-->
+        <!--<div class="col-25">-->
+
+        <!--</div>-->
+        <!--<div class="col-75 text-right">-->
+
+            <!--<a href="http:/dajshdgajshd">dajshdkjasnd</a>-->
+        <!--</div>-->
+        <!--</div>-->
+    <!--</ion-content>-->
+    <!--<ion-content>-->
+        <!--<div ng-repeat="city in route.results" route-map="city"></div>-->
+    <!--</ion-content>-->
+
 </ion-view>
 
 

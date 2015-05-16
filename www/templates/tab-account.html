@@ -1,5 +1,6 @@
 <ion-view view-title="Account">
     <ion-content padding="true">
+        <!--
         <div class="list">
             <div class="item">
                 <span class="input-label">Account by <span ng-hide="banan">username</span><span ng-show="banan">phone number</span></span>
@@ -11,25 +12,34 @@
                 </label>
             </div>
         </div>
-        <div class="list" ng-hide="banan">
+        -->
+        <div class="list">
+            <div class="item">
+                <span class="title" style="font-weight: bold;">login to your strive account!</span>
+            </div>
             <label class="item item-input">
                 <span class="input-label">Username</span>
-                <input type="text" ng-model="loginInfo.username">
+                <input type="text" ng-model="loginInfo.username" placeholder="Anna Andesson">
             </label>
             <label class="item item-input">
                 <span class="input-label">Password</span>
-                <input type="password" ng-model="loginInfo.password">
+                <input type="password" ng-model="loginInfo.password" placeholder="myAwesomeSecretPass">
             </label>
             <div class="item">
-                {{loginResult}}
-                <button class="button button-positive button-block" ng-click="loginByUsername()">
+                <button class="button button-positive button-block" ng-disabled="!loginInfo.username || !loginInfo.password" ng-click="loginByUsername()">
                     Login
                 </button>
+                <button class="button button-dark button-block" ng-click="logout()">
+                    Logout
+                </button>
+                <!--
                 <button class="button button-block">
                     Register
                 </button>
+                -->
             </div>
         </div>
+        <!--
         <div class="list" ng-show="banan">
             <label class="item item-input">
                 <span class="input-label">phonenumber</span>
@@ -44,6 +54,7 @@
                 </button>
             </div>
         </div>
+        -->
     </ion-content>
 </ion-view>
 

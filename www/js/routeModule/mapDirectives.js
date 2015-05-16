@@ -9,21 +9,22 @@ routeModule.directive('routeMap',['$state', function ($state) {
         interpolate: true,
         link: function (scope, elm, attr) {
 
+            scope.isHere = false;
+
             var cityCardHeight = scope.routeMap.DistanceFromPreviousPointMeters / 10;
             if(cityCardHeight < 200){
                 cityCardHeight = 200;
             }
 
+            if(scope.routeMap.users){
+                scope.isHere = true;
+            }
 
             scope.cityCardHeight = cityCardHeight;
 
             scope.getDetailedView = function(){
                 $state.go('tab.chat-detail', {id:scope.routeMap.objectId});
             };
-
-
-
-            console.log(scope.routeMap);
 
         },
         controller: ['$scope',function ($scope) {
