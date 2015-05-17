@@ -15,11 +15,12 @@ angular.module('starter', [
     'ionic',
     'starter.controllers',
     'starter.services',
+    'internationalPhoneNumber',
+    //------------
     'appModule',
     'accountModule',
     'routeModule',
     'healthKitModule'
-
 ])
 
   .run(function ($ionicPlatform, $ionicNavBarDelegate) {
@@ -42,7 +43,6 @@ angular.module('starter', [
 
       });
   })
-
   .config(function ($stateProvider, $urlRouterProvider) {
 
 

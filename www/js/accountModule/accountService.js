@@ -1,6 +1,6 @@
 accountModule.factory('accountService', ['$http', '$q', '$location', function ($http, $q, $location) {
 
-    var rootUrl = 'https://api.parse.com/1/';
+    var rootUrl = 'http://api.getstriveapp.com/v1/';
 
     var accountService = {
         /**
@@ -11,8 +11,8 @@ accountModule.factory('accountService', ['$http', '$q', '$location', function ($
          */
         login: function (userName, password) {
             var deferred = $q.defer();
-            $http.defaults.headers.common["X-Parse-Application-Id"] = "KoQHnogEss1EulYLu7xS8zzQvM0T5lifc7pOqSLA";
-            $http.defaults.headers.common["X-Parse-REST-API-Key"] = "SCNHZIrtoCMdSfWwZDaPfWLpPqSATSz2ChbjmvTR";
+            //delete $http.defaults.headers.common["X-Parse-Application-Id"];
+            //delete  $http.defaults.headers.common["X-Parse-REST-API-Key"];
             $http({
                 method: 'GET',
                 url: rootUrl + 'login',
@@ -40,8 +40,8 @@ accountModule.factory('accountService', ['$http', '$q', '$location', function ($
         },
         getSpecifiedUser: function (userID) {
             var deferred = $q.defer();
-            $http.defaults.headers.common["X-Parse-Application-Id"] = "KoQHnogEss1EulYLu7xS8zzQvM0T5lifc7pOqSLA";
-            $http.defaults.headers.common["X-Parse-REST-API-Key"] = "SCNHZIrtoCMdSfWwZDaPfWLpPqSATSz2ChbjmvTR";
+            //$http.defaults.headers.common["X-Parse-Application-Id"] = "KoQHnogEss1EulYLu7xS8zzQvM0T5lifc7pOqSLA";
+            //$http.defaults.headers.common["X-Parse-REST-API-Key"] = "SCNHZIrtoCMdSfWwZDaPfWLpPqSATSz2ChbjmvTR";
             $http({
                 method: 'GET',
                 url: rootUrl + 'users/' + userID,
@@ -81,16 +81,50 @@ accountModule.factory('accountService', ['$http', '$q', '$location', function ($
             return deferred.promise;
 
         },
-        register: function (userObject) {
+        confirmCode: function (activationCode, userId) {
             var deferred = $q.defer();
+            var rootUrl = 'http://api.getstriveapp.com/v1/';
+            delete  $http.defaults.headers.common["X-Parse-Application-Id"];
+            delete  $http.defaults.headers.common["X-Parse-REST-API-Key"];
 
             $http({
-                method: 'POST',
-                url: rootUrl + 'users',
+                method: 'GET',
+                url: rootUrl + 'user/' + userId,
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                data: userObject
+                params : {
+                    activationCode :  activationCode
+                }
+            }).
+              success(function (data, status, headers, config) {
+                  deferred.resolve(data);
+              }).
+              error(function (data, status, headers, config) {
+                  deferred.reject('error');
+              });
+
+
+            return deferred.promise;
+
+        },
+        register: function (phonenumber, username, imgUrl) {
+            var deferred = $q.defer();
+            var rootUrl = 'http://api.getstriveapp.com/v1/';
+            delete  $http.defaults.headers.common["X-Parse-Application-Id"];
+            delete  $http.defaults.headers.common["X-Parse-REST-API-Key"];
+
+            $http({
+                method: 'POST',
+                url: rootUrl + 'user',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                params : {
+                    phonenumber :  phonenumber,
+                    username : username,
+                    imgUrl : imgUrl
+                }
             }).
               success(function (data, status, headers, config) {
                   deferred.resolve(data);

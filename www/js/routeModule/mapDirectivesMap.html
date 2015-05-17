@@ -2,15 +2,14 @@
      ng-attr-id="routeMap.users ? 'usersLocation':''" on-swipe-left="getDetailedView()">
     <div class="checkPointContainer text-right">
     <br>
-        <span>Checkpoint:</span><br>
-        <span style="font-weight: bold;">{{routeMap.cityName}}</span><br/>
-        <span>Delsträcka: {{routeMap.distanceToNextPoint}} m</span><br/>
-        <span>Total: {{routeMap.totalDistanceMeters}} m</span><br/>
+        <span class="mainSpan">{{routeMap.cityName}}</span><br/>
+        <span class="secondarySpan">Delsträcka: {{routeMap.distanceToNextPoint}} m</span><br/>
+        <span class="secondarySpan">Total: {{routeMap.totalDistanceMeters}} m</span><br/>
     </div>
     <img ng-repeat="user in routeMap.users"
-         class="userIconMap userIconMap-me"
+         class="userIconMap userIconMap-me userAnimate"
          style="top: {{user.distanceOnThisSectionMeters/meterDevider}}px;"
-         src="{{user.imageUrl}}" alt=""/>
+         src="{{user.imageUrl || 'http://www.american.edu/uploads/profiles/large/chris_palmer_profile_11.jpg'}}" alt=""/>
     <span class="checkpointMarkerIsHere ion-location"></span>
 </div>
 

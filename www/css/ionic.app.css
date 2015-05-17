@@ -7702,7 +7702,10 @@ a.button {
   position: absolute;
   right: 0;
   top: 10px;
-  z-index: 50; }
+  z-index: 50;
+  -webkit-box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.45); }
 
 .userIconMap {
   position: absolute;
@@ -7711,7 +7714,7 @@ a.button {
   width: 30px;
   height: 30px;
   background-color: #ffffff;
-  padding: 2px;
+  padding: 3px;
   border-radius: 30px;
   margin-right: -5px;
   margin-bottom: -15px; }
@@ -7723,10 +7726,14 @@ a.button {
 
 .checkPointContainer {
   margin-right: 30px;
-  line-height: 0.75em; }
-  .checkPointContainer span {
+  line-height: 1em; }
+  .checkPointContainer .mainSpan, .checkPointContainer span {
     color: white;
-    font-size: 0.75em; }
+    font-size: 1em;
+    font-weight: bold;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5); }
+  .checkPointContainer .secondarySpan {
+    font-size: 0.7em; }
 
 .cityPointContainer {
   padding-right: 15px;
@@ -7738,7 +7745,8 @@ a.button {
     font-size: 0.75em; }
   .cityPointContainer .title {
     font-weight: bold;
-    font-size: 1.2em; }
+    font-size: 1.2em;
+    line-height: 1.2em; }
 
 hr {
   border: 0;

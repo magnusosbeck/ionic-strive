@@ -8,12 +8,18 @@
           on-refresh="doRefresh()">
         </ion-refresher>
         <a href="" ng-click="findMe()"><span>Nuvarande position</span></a><br><br>
-        <span class="title">{{currentStretch.cityName}}</span><br/>
-        <span>Sträcka: {{currentStretch.distanceToNextPoint}} m</span><br/>
-        <span>Total: {{currentStretch.totalDistanceMeters}} m</span><br/>
-        <hr/>
-        <span>{{currentStretch.wikiText | limitTo:250}}..</span><br/>
+        <span class="title">{{currentStretch.cityName || 'No City name available'}}</span><br/>
+        <span>Sträcka: {{currentStretch.distanceToNextPoint || '0'}} m</span><br/>
+        <span>Total: {{currentStretch.totalDistanceMeters || '0'}} m</span><br/>
+        <span>{{currentStretch.wikiText || 'no data'}}..</span>
+        <br/>
+        <br/>
+        <br/>
+
+        <br/>
         <!--<img src="{{currentStretch.imageUrl}}" width="50%" alt=""/>-->
+        <button ng-click="addFakeSteps()" ng-disabled="isLoading" class="button button-dark button-small button-block">Add some steps for today</button>
+        <span style="font-size: 2em;">{{todaysSteps || '0'}}</span>
     </ion-content>
 </ion-view>
 
