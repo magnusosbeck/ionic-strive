@@ -1,4 +1,5 @@
-<ion-view view-title="My Strive" ng-style="{'background-image': 'url('+currentStretch.imageUrl+')'}" style="margin-top: 25px; background-size: cover; background-position: center center;">
+<ion-view view-title="My Strive" ng-style="{'background-image': 'url('+currentStretch.imageUrl+')'}"
+          style="margin-top: 25px; background-size: cover; background-position: center center;">
     <ion-content class="col-50 mapLine" padding="true">
         <div ng-repeat="city in route.results" route-map="city"></div>
     </ion-content>
@@ -7,20 +8,55 @@
           pulling-text="Pull to refresh..."
           on-refresh="doRefresh()">
         </ion-refresher>
-        <a href="" ng-click="findMe()"><span>Nuvarande position</span></a><br><br>
-        <span class="title">{{currentStretch.cityName || 'No City name available'}}</span><br/>
-        <span>Sträcka: {{currentStretch.distanceToNextPoint || '0'}} m</span><br/>
-        <span>Total: {{currentStretch.totalDistanceMeters || '0'}} m</span><br/>
-        <span>{{currentStretch.wikiText || 'no data'}}..</span>
-        <br/>
-        <br/>
-        <br/>
+        <div ng-click="details()" style="cursor: pointer;">
+            <a href="" ng-click="findMe()"><span>Nuvarande position</span></a><br><br>
+            <span class="title">{{currentStretch.cityName || 'No City name available'}}</span><br/>
+            <span>Sträcka: {{currentStretch.distanceToNextPoint || '0'}} m</span><br/>
+            <span>Total: {{currentStretch.totalDistanceMeters || '0'}} m</span><br/>
+            <br/>
+            <img src="{{currentStretch.imageUrl}}" width="100%" alt=""/>
+            <br/>
+            <span>{{currentStretch.wikiText || 'no data' | limitTo:150}}...</span><br>
 
+        </div>
         <br/>
-        <!--<img src="{{currentStretch.imageUrl}}" width="50%" alt=""/>-->
-        <button ng-click="addFakeSteps()" ng-disabled="isLoading" class="button button-dark button-small button-block">Add some steps for today</button>
-        <span style="font-size: 2em;">{{todaysSteps || '0'}}</span>
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" style="" show-pager="false">
+            <ion-slide>
+                <div class="box blue">
+                    <br/>
+                    <span style="font-size: 2em; font-weight: bolder;">1500</span><br/>
+                    <span>Latest checked in steps</span><br>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box blue">
+                    <br/>
+                    <span style="font-size: 2em; font-weight: bolder;">2500</span><br/>
+                    <span>Steps today</span><br>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box blue">
+                    <br/>
+                    <span style="font-size: 2em; font-weight: bolder;">23512</span><br/>
+                    <span>Total steps</span><br>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box">
+                    <button ng-click="addFakeSteps()" ng-disabled="isLoading" class="button button-dark button-small button-block">Add steps</button>
+                </div>
+            </ion-slide>
+
+        </ion-slide-box>
+
+        <!---->
+
+        <!--Add some steps for today-->
+        <!--</button>-->
+        <!--<span style="font-size: 2em;">{{todaysSteps || '0'}}</span>-->
     </ion-content>
+
 </ion-view>
 
 

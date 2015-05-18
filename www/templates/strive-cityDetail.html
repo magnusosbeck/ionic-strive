@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<ion-view view-title="My Strive" ng-click="getBack()">
+    <ion-content padding="true" style="color:white;">
+        <img src="{{currentStretch.imageUrl}}" width="100%" alt=""/>
+        <h1 class="title" style="color: white;">{{currentStretch.cityName || 'No City name available'}}</h1>
+        <span>{{currentStretch.wikiText || 'no data'}}..</span>
+    </ion-content>
+</ion-view>

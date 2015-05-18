@@ -10,7 +10,8 @@
          class="userIconMap userIconMap-me userAnimate"
          style="top: {{user.distanceOnThisSectionMeters/meterDevider}}px;"
          src="{{user.imageUrl || 'http://www.american.edu/uploads/profiles/large/chris_palmer_profile_11.jpg'}}" alt=""/>
-    <span class="checkpointMarkerIsHere ion-location"></span>
+    <span ng-hide="routeMap.users" class="checkpointMarkerIsHere ion-locked" style="font-size: 12px;"></span>
+    <span ng-show="routeMap.users" class="checkpointMarkerIsHere ion-location" style="color: orange;"></span>
 </div>
 
 

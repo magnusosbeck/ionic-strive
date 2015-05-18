@@ -4,6 +4,9 @@ angular.module('starter.controllers', [])
 
       var self = this;
 
+      //if($stateParams){
+      //    console.log($stateParams);
+      //}
 
       $scope.isLoading = false;
 
@@ -14,7 +17,6 @@ angular.module('starter.controllers', [])
               "results": self.oldStrive
           };
           $scope.currentStretch = self.oldCurrentStretch;
-          console.log('old stretch', self.oldCurrentStretch);
       }
 
       self.init = function (fakeData) {
@@ -43,12 +45,13 @@ angular.module('starter.controllers', [])
                   };
                   localStorageService.save('myRoute', response);
 
-                  console.log('data is updated', response);
                   $scope.findMe();
                   $scope.isLoading = false;
               });
           }
       };
+
+
 
 
       self.findMyStretch = function (striveMap, userId) {
@@ -96,7 +99,7 @@ angular.module('starter.controllers', [])
           }
           var today = yyyy + '-' + mm + '-' + dd;
 
-          var fakeStepCount = Math.floor((Math.random() * 6000) + 3000) + localStorageService.load('fakeStrive');
+          var fakeStepCount = Math.floor((Math.random() * 3000) + 900) + localStorageService.load('fakeStrive');
           $scope.todaysSteps = localStorageService.save('fakeStrive', fakeStepCount);
           var fakeDistance = Math.floor(fakeStepCount / 3);
 
@@ -104,66 +107,24 @@ angular.module('starter.controllers', [])
 
           self.init(fakeString);
 
-          //var me = localStorageService.load('me');
-          //routeService.updateRoute('banan', me['objectId'], fakeString).then(function (response) {
-          //
-          //
-          //    $scope.currentStretch = self.findMyStretch(response, me['objectId']);
-          //    localStorageService.save('myCurrentLocation', $scope.currentStretch);
-          //
-          //    $scope.route = {
-          //        "results": response
-          //    };
-          //    localStorageService.save('myRoute', response);
-          //    console.log('data is updated');
-          //    $scope.findMe();
-          //
-          //
-          //});
-
-
       };
 
       self.init();
-
-
-      //if ($stateParams.id) {
-      //    for (var i in $scope.route.results) {
-      //         if ($scope.route.results[i].objectId == $stateParams.id) {
-      //            $scope.detailedView = $scope.route. results[i];
-      //            console.log($scope.detailedView);
-      //        }
-      //    }
-      //}
-
 
       $scope.getBack = function () {
           $state.go('tab.dash');
       };
 
-      /*
-       accountService.getSpecifiedUser('wn4UYGoQ1N').then(function (userRespos) {
-       userRespos.distanceOnThisStreth = 500;
-       $scope.route.results[3].users = [userRespos];
-       console.log($scope.route);
+      $scope.details = function () {
+          $state.go('tab.dash-detail');
+      };
+  })
 
-       });
-       */
-
-      /*$location.hash('usersLocation');
-       $ionicScrollDelegate.anchorScroll(true);*/
-
+  .controller('cityDetailController', function ($scope, routeService, $stateParams, $state, DashCtrl) {
 
   })
 
   .controller('ChatsCtrl', function ($scope, routeService, healthKitService) {
-
-
-      //routeService.getRoutsBasedOnUserId('L4tOQcuyXc').then(function (results) {
-      //    $scope.result = results;
-      //    console.log(results);
-      //
-      //});
 
   })
 

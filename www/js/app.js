@@ -70,6 +70,15 @@ angular.module('starter', [
                 }
             }
         })
+        .state('tab.dash-detail', {
+            url: '/dash/:id',
+            views: {
+                'tab-dash': {
+                    templateUrl: 'templates/strive-cityDetail.html',
+                    controller: 'DashCtrl'
+                }
+            }
+        })
 
         .state('tab.chats', {
             url: '/chats',
